@@ -138,10 +138,10 @@ const Vendorinfromation = () => {
       case 1:
         return (
           <div className="formcontainer">
-            <p className="vendortext">PUBLISHER DETAILS</p>
+            <p style={{fontFamily:'Rooboto'}} className="vendortext">PUBLISHER DETAILS</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
-                <TextField
+                <TextField  style={{fontFamily:'Roobotot'}}
                   id="standard-basic"
                   label="PUBLISHER NAME *"
                   variant="standard"
@@ -189,11 +189,11 @@ const Vendorinfromation = () => {
                   value={values.type_of_Entity}
                   onChange={handleInputChange}
                 >
-                  <MenuItem value={"indivisual"}>Indivisual</MenuItem>
-                  <MenuItem value={"trust"}>Trust</MenuItem>
-                  <MenuItem value={"company"}> Company</MenuItem>
-                  <MenuItem value={"partnership"}> Partnership</MenuItem>
-                  <MenuItem value={"propitorship"}> Propitorship</MenuItem>
+                  <MenuItem style={{fontFamily:'Rooboto'}} value={"indivisual"}>Indivisual</MenuItem>
+                  <MenuItem style={{fontFamily:'Rooboto'}}   value={"trust"}>Trust</MenuItem>
+                  <MenuItem  style={{fontFamily:'Rooboto'}}  value={"company"}> Company</MenuItem>
+                  <MenuItem style={{fontFamily:'Rooboto'}}  value={"partnership"}> Partnership</MenuItem>
+                  <MenuItem style={{fontFamily:'Rooboto'}} value={"propitorship"}> Propitorship</MenuItem>
                 </TextField>
 
                 <TextField
@@ -225,7 +225,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
 
-                <button className=" btn vendorbtn" onClick={goToNextStep}>
+                <button style={{fontFamily:'Rooboto'}}  className=" btn vendorbtn" onClick={goToNextStep}>
                   Next
                 </button>
               </div>
@@ -235,7 +235,7 @@ const Vendorinfromation = () => {
       case 2:
         return (
           <div className="formcontainer">
-            <p className="vendortext">PUBLISHER ADDRESS</p>
+            <p  style={{fontFamily:'Rooboto'}}  className="vendortext">PUBLISHER ADDRESS</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 <TextField
@@ -294,7 +294,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 {/* </FormControl> */}
-                <button
+                <button style={{fontFamily:'Rooboto'}} 
                   className="btn vendorpreviousbtn"
                   onClick={goToPreviousStep}
                 >
@@ -357,7 +357,7 @@ const Vendorinfromation = () => {
                   value={values.editorial_email}
                   onChange={handleInputChange}
                 />
-                <button className="btn vendorbtn" onClick={() => setStep(3)}>
+                <button style={{fontFamily:'Rooboto'}}  className="btn vendorbtn" onClick={() => setStep(3)}>
                   Next
                 </button>
               </div>
@@ -367,7 +367,7 @@ const Vendorinfromation = () => {
       case 3:
         return (
           <div className="formcontainer">
-            <p className="vendortext">PUBLISHER ADDRESS</p>
+            <p style={{fontFamily:'Rooboto'}}  className="vendortext">PUBLISHER ADDRESS</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 {/* <FormControl fullWidth> */}
@@ -399,7 +399,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 {/* </FormControl> */}
-                <button
+                <button style={{fontFamily:'Rooboto'}} 
                   className="btn vendorpreviousbtn"
                   onClick={goToPreviousStep}
                 >
@@ -445,7 +445,7 @@ const Vendorinfromation = () => {
       case 4:
         return (
           <div className="formcontainer">
-            <p className="vendortext">PUBLICATION DETAILS</p>
+            <p  style={{fontFamily:'Rooboto'}} className="vendortext">PUBLICATION DETAILS</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 <TextField
@@ -485,7 +485,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
 
-                <button
+                <button style={{fontFamily:'Rooboto'}} 
                   className="btn vendorpreviousbtn"
                   onClick={(e) => goToPreviousStep(e)}
                 >
@@ -503,7 +503,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 <FormControl fullWidth>
-                  <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                  <InputLabel  style={{fontFamily:'Rooboto'}} variant="standard" htmlFor="uncontrolled-native">
                     FREQUENCY OF PUBLICATION
                   </InputLabel>
                   <NativeSelect
@@ -514,15 +514,15 @@ const Vendorinfromation = () => {
                       id: "uncontrolled-native",
                     }}
                   >
-                    <option value={"None"}></option>
-                    <option value={"Daily"}>DAILY</option>
-                    <option value={"Weekly"}>WEEKLY</option>
-                    <option value={"Monthly"}>MONTHLY</option>
-                    <option value={"BI Monthly"}>BI MONTHLY</option>
-                    <option value={"Fornightly"}>FORNIGHTLY</option>
-                    <option value={"Yearly"}>YEARLY</option>
-                    <option value={"Half Yearly"}>HALF YEARLY</option>
-                    <option value={"Quarterly"}>QUARTERLY</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"None"}></option>
+                    <option  style={{fontFamily:'Rooboto'}} value={"Daily"}>DAILY</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Weekly"}>WEEKLY</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Monthly"}>MONTHLY</option>
+                    <option style={{fontFamily:'Rooboto'}} value={"BI Monthly"}>BI MONTHLY</option>
+                    <option style={{fontFamily:'Rooboto'}} value={"Fornightly"}>FORNIGHTLY</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Yearly"}>YEARLY</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Half Yearly"}>HALF YEARLY</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Quarterly"}>QUARTERLY</option>
                   </NativeSelect>
                 </FormControl>
                 <TextField
@@ -534,7 +534,7 @@ const Vendorinfromation = () => {
                   value={values.RNI_No}
                   onChange={handleInputChange}
                 />
-                <button
+                <button style={{fontFamily:'Rooboto'}} 
                   className="btn vendorbtn"
                   onClick={(e) => goToNextStep(e)}
                 >
@@ -547,7 +547,7 @@ const Vendorinfromation = () => {
       case 5:
         return (
           <div className="formcontainer">
-            <p className="vendortext">PUBLICATION SOCIAL</p>
+            <p  style={{fontFamily:'Rooboto'}} className="vendortext">PUBLICATION SOCIAL</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 <TextField
@@ -578,7 +578,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
 
-                <button
+                <button style={{fontFamily:'Rooboto'}} 
                   className="btn vendorpreviousbtn"
                   onClick={goToPreviousStep}
                 >
@@ -605,7 +605,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
 
-                <button className="btn vendorbtn" onClick={goToNextStep}>
+                <button  style={{fontFamily:'Rooboto'}} className="btn vendorbtn" onClick={goToNextStep}>
                   Next
                 </button>
               </div>
@@ -615,7 +615,7 @@ const Vendorinfromation = () => {
       case 6:
         return (
           <div className="formcontainer">
-            <p className="vendortext">PUBLISHER SITE</p>
+            <p style={{fontFamily:'Rooboto'}}  className="vendortext">PUBLISHER SITE</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 <TextField
@@ -647,7 +647,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 <div className="mb-3">
-                  <label htmlFor="formFile" className="form-label">
+                  <label style={{fontFamily:'Rooboto'}}  htmlFor="formFile" className="form-label">
                     Logo Small
                   </label>
                   <input
@@ -659,7 +659,7 @@ const Vendorinfromation = () => {
                   />
                 </div>
 
-                <div
+                <div style={{fontFamily:'Rooboto'}} 
                   onClick={goToPreviousStep}
                   className="btn vendorpreviousbtn"
                 >
@@ -695,7 +695,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 <div className="mb-3">
-                  <label htmlFor="formFile" className="form-label">
+                  <label style={{fontFamily:'Rooboto'}}  htmlFor="formFile" className="form-label">
                     Logo Large
                   </label>
                   <input
@@ -707,7 +707,7 @@ const Vendorinfromation = () => {
                   />
                 </div>
 
-                <div onClick={goToNextStep} className="btn vendorbtn">
+                <div  style={{fontFamily:'Rooboto'}} onClick={goToNextStep} className="btn vendorbtn">
                   Next Step
                 </div>
               </div>
@@ -717,7 +717,7 @@ const Vendorinfromation = () => {
       case 7:
         return (
           <div className="formcontainer">
-            <p className="vendortext">FINANCE</p>
+            <p  style={{fontFamily:'Rooboto'}} className="vendortext">FINANCE</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 <TextField
@@ -754,7 +754,7 @@ const Vendorinfromation = () => {
                 >
                   Previous
                 </button> */}
-                <div
+                <div style={{fontFamily:'Rooboto'}} 
                   onClick={goToPreviousStep}
                   className="btn vendorpreviousbtn"
                 >
@@ -791,7 +791,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 {/* </FormControl> */}
-                <button className="btn  vendorbtn" onClick={goToNextStep}>
+                <button style={{fontFamily:'Rooboto'}} className="btn  vendorbtn" onClick={goToNextStep}>
                   Next
                 </button>
               </div>
@@ -801,7 +801,7 @@ const Vendorinfromation = () => {
       case 8:
         return (
           <div className="formcontainer">
-            <p className="vendortext">MOU TERMS</p>
+            <p style={{fontFamily:'Rooboto'}} className="vendortext">MOU TERMS</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 {/* <FormControl fullWidth> */}
@@ -833,7 +833,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 {/* </FormControl> */}
-                <button
+                <button style={{fontFamily:'Rooboto'}} 
                   className="btn vendorpreviousbtn"
                   onClick={goToPreviousStep}
                 >
@@ -861,7 +861,7 @@ const Vendorinfromation = () => {
                   onChange={handleInputChange}
                 />
                 {/* </FormControl> */}
-                <button className="btn  vendorbtn" onClick={goToNextStep}>
+                <button  style={{fontFamily:'Rooboto'}} className="btn  vendorbtn" onClick={goToNextStep}>
                   Next
                 </button>
               </div>
@@ -871,12 +871,12 @@ const Vendorinfromation = () => {
       case 9:
         return (
           <div className="formcontainer">
-            <p className="vendortext">STATUS</p>
+            <p  style={{fontFamily:'Rooboto'}} className="vendortext">STATUS</p>
             <div className="vendorformbox">
               <div className="vendorformbox1">
                 {/* <FormControl fullWidth> */}
                 <FormControl fullWidth>
-                  <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                  <InputLabel style={{fontFamily:'Rooboto'}}  variant="standard" htmlFor="uncontrolled-native">
                     STATUS OF USER
                   </InputLabel>
                   <NativeSelect
@@ -889,14 +889,14 @@ const Vendorinfromation = () => {
                     }}
                   >
                     {" "}
-                    <option value={"None"}></option>
-                    <option value={"Active"}>ACTIVE</option>
-                    <option value={"Suspended"}>SUSPENDED</option>
-                    <option value={"Inactive"}>INACTIVE</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"None"}></option>
+                    <option style={{fontFamily:'Rooboto'}}   value={"Active"}>ACTIVE</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Suspended"}>SUSPENDED</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Inactive"}>INACTIVE</option>
                   </NativeSelect>
                 </FormControl>
                 {/* </FormControl> */}
-                <button
+                <button style={{fontFamily:'Rooboto'}} 
                   className="btn vendorpreviousbtn"
                   onClick={goToPreviousStep}
                 >
@@ -906,7 +906,7 @@ const Vendorinfromation = () => {
               <div className="vendorformbox1">
                 {/* <FormControl fullWidth> */}
                 <FormControl fullWidth>
-                  <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                  <InputLabel style={{fontFamily:'Rooboto'}}  variant="standard" htmlFor="uncontrolled-native">
                     STATUS OF PUBLICATION
                   </InputLabel>
                   <NativeSelect
@@ -920,13 +920,13 @@ const Vendorinfromation = () => {
                   >
                     {" "}
                     <option value={"None"}></option>
-                    <option value={"Active"}>ACTIVE</option>
-                    <option value={"Suspended"}>SUSPENDED</option>
-                    <option value={"Inactive"}>INACTIVE</option>
+                    <option  style={{fontFamily:'Rooboto'}} value={"Active"}>ACTIVE</option>
+                    <option  style={{fontFamily:'Rooboto'}} value={"Suspended"}>SUSPENDED</option>
+                    <option style={{fontFamily:'Rooboto'}}  value={"Inactive"}>INACTIVE</option>
                   </NativeSelect>
                 </FormControl>
                 {/* </FormControl> */}
-                <button className="btn vendorbtn" type="submit">
+                <button style={{fontFamily:'Rooboto'}}  className="btn vendorbtn" type="submit">
                   Submit
                 </button>
               </div>
@@ -946,7 +946,7 @@ const Vendorinfromation = () => {
         </div>
         <div className="vendorbox2">
           <div className="vendorheader">
-            <p className="vendorheading">
+            <p className="vendorheading" style={{fontFamily:'Roboto'}}>
               <button
                 onClick={() => navigate(-1)}
                 className="pointer"
@@ -956,20 +956,20 @@ const Vendorinfromation = () => {
                   color: "white",
                 }}
               >
-                <ArrowBackIcon />
+                {/* <ArrowBackIcon /> */}
               </button>
               VENDOR REGISTRATION
             </p>
           </div>
           <div className=" buttongroup mt-1 ">
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
-              <label
+              <label style={{fontFamily:'Rooboto'}}
                 className="btn btn-secondary active btn1"
                 onClick={() => {
                   setStep(1);
                 }}
               >
-                <input
+                <input 
                   type="radio"
                   name="options"
                   id="option1"
@@ -978,13 +978,13 @@ const Vendorinfromation = () => {
                 />{" "}
                 PUBLISHER DETAILS
               </label>
-              <label
+              <label style={{fontFamily:'Rooboto'}}
                 className="btn btn-secondary btn1"
                 onClick={() => {
                   setStep(2);
                 }}
               >
-                <input
+                <input 
                   type="radio"
                   name="options"
                   id="option2"
@@ -992,7 +992,7 @@ const Vendorinfromation = () => {
                 />{" "}
                 PUBLISHER CONTACT
               </label>
-              <label
+              <label style={{fontFamily:'Rooboto'}}
                 className="btn btn-secondary btn1"
                 onClick={() => {
                   setStep(3);
@@ -1007,12 +1007,12 @@ const Vendorinfromation = () => {
                 PUBLISHER ADDRESS
               </label>
               <label
-                className="btn btn-secondary btn1"
+                className="btn btn-secondary btn1" style={{fontFamily:'Rooboto'}}
                 onClick={() => {
                   setStep(4);
                 }}
               >
-                <input
+                <input 
                   type="radio"
                   name="options"
                   id="option3"
@@ -1020,8 +1020,8 @@ const Vendorinfromation = () => {
                 />
                 PUBLICATION DETAILS
               </label>
-              <label
-                className="btn btn-secondary btn1"
+              <label style={{fontFamily:'Rooboto'}}
+                className ="btn btn-secondary btn1"
                 onClick={() => {
                   setStep(5);
                 }}
@@ -1034,21 +1034,22 @@ const Vendorinfromation = () => {
                 />{" "}
                 PUBLICATION SOCIAL
               </label>
-              <label
+              <label style={{fontFamily:'Rooboto'}}
                 className="btn btn-secondary btn1"
                 onClick={() => {
                   setStep(6);
                 }}
               >
-                <input
-                  type="radio"
+                <input PUBLISHER SITE
+                  type="radio" 
+                  fontFamily="Rooboto"
                   name="options"
                   id="option3"
                   autoComplete="off"
                 />
                 PUBLISHER SITE
               </label>
-              <label
+              <label style={{fontFamily:'Rooboto'}}
                 className="btn btn-secondary btn1"
                 onClick={() => {
                   setStep(7);
@@ -1062,7 +1063,7 @@ const Vendorinfromation = () => {
                 />{" "}
                 FINANCE
               </label>
-              <label
+              <label style={{fontFamily:'Rooboto'}}
                 className="btn btn-secondary btn1"
                 onClick={() => {
                   setStep(8);
@@ -1076,7 +1077,7 @@ const Vendorinfromation = () => {
                 />{" "}
                 MOU TERMS
               </label>
-              <label
+              <label style={{fontFamily:'Rooboto'}}
                 className="btn btn-secondary btn1"
                 onClick={() => {
                   setStep(9);

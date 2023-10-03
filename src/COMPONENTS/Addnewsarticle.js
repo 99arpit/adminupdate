@@ -17,7 +17,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import categories from "../Masters/Categories";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import Multiselect from "multiselect-react-dropdown";
 const Addnewsarticle = () => {
   const navigate = useNavigate();
 
@@ -44,6 +44,8 @@ const Addnewsarticle = () => {
   };
 
   const [values, setValues] = useState(initialValues);
+  const [selectedTags, setSelectedTags] = useState([]);
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -62,7 +64,11 @@ const Addnewsarticle = () => {
     let formdata = new FormData();
     for (const key in values) {
       if (values.hasOwnProperty(key)) {
+        if (key === "tags") {
+          formdata.append(key, JSON.stringify(selectedTags));
+        } else{
         formdata.append(key, values[key]);
+        }
       }
     }
     const superAdminToken = localStorage?.getItem("superAdminToken");
@@ -110,7 +116,7 @@ const Addnewsarticle = () => {
   };
   ///////////////////////////////// To send draft request ///////////////////////////////////////
 
-  /////get api tag///
+  /////get api tag/// .///////////////////////////////////////////////////////////
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -122,7 +128,63 @@ const Addnewsarticle = () => {
   }, []);
   console.log(data);
 
-  /////
+  ///// /////get api tag/// //////////////////
+
+  ///////////////////////////// /////get api getmastercategories/////////////////////////////////////////////////////////////
+
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    fetch("http://174.138.101.222:8080/getmastercategories").then((result) => {
+      result.json().then((resp) => {
+        setCategory(resp.data);
+      });
+    });
+  }, []);
+  console.log(category);
+
+  ////////////////////////////////////////////////// /////get api getmastercategories/////////////////////////////////////////////////////////////
+
+
+
+
+ /////////////////////get api tag///////////////////////////////////////////////////
+
+
+ const [tags, setTags] = useState([]);
+
+ useEffect(() => {
+   const getcountrydata = async () => {
+     const getcountryname = [];
+
+     const reqData = await fetch("http://174.138.101.222:8080/getmastertag");
+     const resData = await reqData.json();
+     // console.log(resData.data);
+     // setCountry(resData.data)
+
+     for (let i = 0; i < resData.data.length; i++) {
+       getcountryname.push(resData.data[i].tag_name);
+     }
+
+     setTags(getcountryname);
+
+     // console.log(getcountryname);
+   };
+
+   getcountrydata();
+ }, []);
+
+ // //  ///////////////////////// /////////////////////get api tag///////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -132,29 +194,40 @@ const Addnewsarticle = () => {
           <span>
             <HiOutlineArrowSmallLeft onClick={back} />
           </span>
-          <span>Post News</span>
+          <span style={{ fontFamily: "Rooboto" }}>Post News</span>
         </h1>
 
         <FormControl className="FormControl">
-          <InputLabel id="demo-simple-select-helper-label">
-            "Category"
+          <InputLabel
+            style={{ fontFamily: "Rooboto" }}
+            id="demo-simple-select-helper-label"
+          >
+            Categories
           </InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
             label="PLATFORM"
+            placeholder="Category"
             name="category"
+            style={{ fontFamily: "Rooboto" }}
             value={values.category}
             onChange={handleInputChange}
           >
-            {categories.map((item) => {
-              return <MenuItem value={item}>{item}</MenuItem>;
+            {category.map((item) => {
+              return (
+                <MenuItem value={item.categories_Name_English}>
+                  {item.categories_Name_English}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>
 
         <div className="ckeditor FormControl">
-          <p className="cktitle ">Title *</p>
+          <p style={{ fontFamily: "Rooboto" }} className="cktitle ">
+            Title *
+          </p>
           <CKEditor
             editor={Editor}
             data="<p>Hello from CKEditor 5!</p>"
@@ -186,7 +259,9 @@ const Addnewsarticle = () => {
           />
         </div> */}
         <div className="ckeditor">
-          <p className="cktitle">Summary / Short Details *</p>
+          <p style={{ fontFamily: "Rooboto" }} className="cktitle">
+            Summary / Short Details *
+          </p>
           <CKEditor
             editor={Editor}
             data="<p>Hello from CKEditor 5!</p>"
@@ -202,7 +277,9 @@ const Addnewsarticle = () => {
           />
         </div>
         <div className="ckeditor ckeditorBody">
-          <p className="cktitle">Body *</p>
+          <p style={{ fontFamily: "Rooboto" }} className="cktitle">
+            Body *
+          </p>
           <CKEditor
             editor={Editor}
             data={values.body}
@@ -239,23 +316,62 @@ const Addnewsarticle = () => {
           onChange={handleInputChange}
         />
 
-        <FormControl className="FormControl">
-          <InputLabel id="demo-simple-select-helper-label">
-            Tags/Keywords
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
+<FormControl className="FormControl" method="post">
+           <InputLabel
+            style={{ fontFamily: "Rooboto" }}
+            id="demo-simple-select-helper-label"
+          >
+          </InputLabel> 
+          {/* <Select
+            // labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            // value={age}
-            label="CATEGORY"
-            // onChange={handleChange}
+            label="Tag"
+            placeholder="Tags/Keywords"
+            name="tags"
+            style={{ fontFamily: "Roboto" }}
+            // multiple // Enable multiple selections
+            value={values.data}
+            // value={selectedTags} // Set the selected tags from state
+            onChange={handleInputChange}
           >
             {data?.data?.map((item) => (
               <MenuItem key={item._id} value={item.tag_name}>
                 {item.tag_name}
               </MenuItem>
             ))}
-          </Select>
+          
+         </Select>    */}
+
+          {/* <Multiselect
+            isObject={false}
+            onRemove={(event) => {
+              console.log(event);
+            }}
+            onSelect={(event) => {
+              console.log(event);
+            }}
+            options={tags}
+            showCheckbox
+            // labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Tag"
+            placeholder="Tags/Keywords"
+            name="tags"
+            style={{ fontFamily: "Roboto" }}
+            // multiple // Enable multiple selections
+            value={values.tags}
+            // value={selectedTags} // Se t the selected tags from state
+            onChange={handleInputChange}
+          ></Multiselect> */}
+          <Multiselect
+            isObject={false}
+            onSelect={(selectedList) => setSelectedTags(selectedList)}
+            onRemove={(selectedList) => setSelectedTags(selectedList)}
+            options={tags}
+            showCheckbox 
+            value={selectedTags}
+            
+          />
         </FormControl>
 
         <FormControl className="FormControl">
@@ -270,10 +386,18 @@ const Addnewsarticle = () => {
             value={values.news_priority}
             onChange={handleInputChange}
           >
-            <MenuItem value={"Breaking"}>Breaking</MenuItem>
-            <MenuItem value={"Imported"}>Imported</MenuItem>
-            <MenuItem value={"Normal"}>Normal</MenuItem>
-            <MenuItem value={"Feature"}>Feature</MenuItem>
+            <MenuItem style={{ fontFamily: "Rooboto" }} value={"Breaking"}>
+              Breaking
+            </MenuItem>
+            <MenuItem style={{ fontFamily: "Rooboto" }} value={"Imported"}>
+              Imported
+            </MenuItem>
+            <MenuItem style={{ fontFamily: "Rooboto" }} value={"Normal"}>
+              Normal
+            </MenuItem>
+            <MenuItem style={{ fontFamily: "Rooboto" }} value={"Feature"}>
+              Feature
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -289,7 +413,10 @@ const Addnewsarticle = () => {
           />
         ) : (
           <FormControl className="FormControl">
-            <InputLabel id="demo-simple-select-helper-label">
+            <InputLabel
+              style={{ fontFamily: "Rooboto" }}
+              id="demo-simple-select-helper-label"
+            >
               Change Byline
             </InputLabel>
 
@@ -301,8 +428,12 @@ const Addnewsarticle = () => {
               value={values.change_byline}
               onChange={handleInputChange}
             >
-              <MenuItem value={true}>Yes</MenuItem>
-              <MenuItem value={false}>No</MenuItem>
+              <MenuItem style={{ fontFamily: "Rooboto" }} value={true}>
+                Yes
+              </MenuItem>
+              <MenuItem style={{ fontFamily: "Rooboto" }} value={false}>
+                No
+              </MenuItem>
             </Select>
           </FormControl>
         )}
@@ -324,6 +455,7 @@ const Addnewsarticle = () => {
         />
 
         <Button
+          style={{ fontFamily: "Rooboto" }}
           variant="contained"
           className="FormControl "
           onClick={draftHandeler}
@@ -332,6 +464,7 @@ const Addnewsarticle = () => {
         </Button>
 
         <Button
+          style={{ fontFamily: "Rooboto" }}
           variant="contained"
           className="FormControl "
           onClick={saveHandeler}

@@ -88,21 +88,39 @@ const NewsAgencyAddnewsarticle = () => {
           <span>Post News</span>
         </h1>
 
-        <FormControl className="FormControl">
+        {/* <FormControl className="FormControl">
           <InputLabel id="demo-simple-select-helper-label">CATEGORY</InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
             label="PLATFORM"
             name="category"
-            value={values.category}
+            // value={values.category}
+            value={values.tags}
             onChange={handleInputChange}
           >
             <MenuItem value={"Ten"}>Ten</MenuItem>
             <MenuItem value={"Twenty"}>Twenty</MenuItem>
             <MenuItem value={"Thirty"}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
+          </Select>          
+        </FormControl> */}
+
+
+        <TextField
+          id="outlined-basic"
+          label="Tags/Keywords"
+          variant="outlined"
+          className="FormControl"
+          name="tags"
+          value={values.tags}
+          onChange={handleInputChange}
+        />
+
+
+
+
+
+
 
         <div className="ckeditor FormControl">
           <p className="cktitle ">Title *</p>

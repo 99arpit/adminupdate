@@ -80,7 +80,7 @@ const Personalinfromation = () => {
       case 3:
         return (
           <div className="personalcontainer">
-            <p className="personaltext">Location</p>
+            <p className="personaltext"></p>
             <div className="formbox">
               <div className="formbox1">
                 <TextField
@@ -176,7 +176,7 @@ const Personalinfromation = () => {
                   variant="standard"
                   className="personalinput"
                 />
-                <button className="btn personalbtn" type="submit">
+                <button style={{fontFamily:'Rooboto'}} className="btn personalbtn" type="submit">
                   Submit
                 </button>
               </div>
@@ -200,7 +200,7 @@ const Personalinfromation = () => {
               <span>
                 <HiOutlineArrowSmallLeft onClick={back} />
               </span>
-              <span style={{ fontSize: "60%" }}>LOCATION</span>
+              <span style={{ fontSize: "60%" ,fontFamily:'Rooboto' }}>LOCATION</span>
             </h1>
           </div>
           

@@ -17,164 +17,136 @@ import { useLocation, useNavigate } from "react-router-dom";
 import categories from "../Masters/Categories";
 import Multiselect from "multiselect-react-dropdown";
 
-
-const Addnewsarticle = () => {
+const EditArticle = () => {
   const location = useLocation();
-  console.log(location.state);
+  // console.log(location.state);
+
   const navigate = useNavigate();
 
   ///////////////////////////////// To take user input ///////////////////////////////////////
 
   let initialValues = {
+    _id: location?.state._id,
     category: location?.state.category,
-    title: "",
+    title: location?.state.title,
     sub_heading: "Sub Heading",
-    short_details: "",
+    short_details: location?.state.short_details,
     body: location?.state.body,
     image: location?.state.image,
-    url: "",
-    tags: "",
-    news_priority: "",
+    url: location?.state.url,
+    tags: location?.state.tags,
+    news_priority: location?.state.news_priority,
     news_sections: "newsSection",
     change_byline: false,
-    author_name: "",
-    source: "",
+    author_name: location?.state.author_name,
+
+    source: location?.state.source,
   };
 
   const [values, setValues] = useState(initialValues);
   const [selectedTags, setSelectedTags] = useState([]);
 
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    if (name === "image") {
-      setValues({ ...values, [name]: event.target.files[0] });
-      console.log(values);
-    } else {
-      setValues({ ...values, [name]: value });
-    }
+
+    setValues({ ...values, [name]: value });
   };
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
-  ///////////////////////////// To Post News and Delete Draft ///////////////////////////////////
+  ///////////////////////////////// To send Update request ///////////////////////////////////////
 
-  const saveHandeler = () => {
+  const UpdateHandeler = () => {
     let formdata = new FormData();
     for (const key in values) {
       if (values.hasOwnProperty(key)) {
         if (key === "tags") {
           formdata.append(key, JSON.stringify(selectedTags));
-        }else{
+        } else{
         formdata.append(key, values[key]);
         }
       }
     }
-    const superAdminToken = localStorage?.getItem("superAdminToken");
-    const superAdminId = localStorage?.getItem("superAdminId");
-
-    console.log(formdata);
+    // console.log(values);
+    // console.log(formdata);
     axios({
-      method: "post",
-      url: `http://174.138.101.222:8080/${superAdminId}/post-news`,
-      data: formdata,
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: "Bearer " + superAdminToken,
-      },
+      method: "put",
+      url: `http://174.138.101.222:8080/UpdateArticle`,
+      data: values,
+      // headers: {
+      //   "content-type": "multipart/form-data",
+      // },
     })
       .then(async (response) => {
-        alert("Draft Edited Successfully and sent to Pending News");
-        try {
-          const response2 = await axios.delete(
-            `http://174.138.101.222:8080/draft-article`,
-            {
-              data: { _id: location.state._id },
-            }
-          );
-          navigate("/news-approval");
-        } catch (error) {
-          console.log(error);
-        }
+        alert(response.data.message);
+        navigate("/news-approval");
+        // console.log(response);
       })
       .catch((error) => {
         console.log(error);
         alert(error.response.data.message);
       });
   };
-  /////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////// To send axios request ///////////////////////////////////////
 
 
 
 
-/////////////////////////////////////////////////////////// get api Categories //////////////////////////////////////////////////////////////////////////////
 
-const [categories, setCategory] = useState([]);
-const getCategories = async () => {
-  try {
-    const response = await axios.get(
-      "http://174.138.101.222:8080/getmastercategories"
-    );
-    // console.log(response.data.data, "categories");
-    setCategory(response.data.data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+
+
+
+///////////////////////////// /////get api getmastercategories/////////////////////////////////////////////////////////////
+
+const [category, setCategory] = useState([]);
+useEffect(() => {
+  fetch("http://174.138.101.222:8080/getmastercategories").then((result) => {
+    result.json().then((resp) => {
+      setCategory(resp.data);
+    });
+  });
+}, []);
+console.log(category);
+
+////////////////////////////////////////////////// /////get api getmastercategories/////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////get api tag///////////////////////////////////////////////////
+
+
+const [tags, setTags] = useState([]);
 
 useEffect(() => {
-  getCategories();
+  const getcountrydata = async () => {
+    const getcountryname = [];
+
+    const reqData = await fetch("http://174.138.101.222:8080/getmastertag");
+    const resData = await reqData.json();
+    // console.log(resData.data);
+    // setCountry(resData.data)
+
+    for (let i = 0; i < resData.data.length; i++) {
+      getcountryname.push(resData.data[i].tag_name);
+    }
+
+    setTags(getcountryname);
+
+    // console.log(getcountryname);
+  };
+
+  getcountrydata();
 }, []);
 
-/////////////////////////////////////////////////////////// get api Categories //////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /////////////////////////////////////////////////////////////////////////////// Tag get api///////////////////////////////////////////////////////////////////
-
-
-  const [tags, setTags] = useState([]);
-
-  useEffect(() => {
-    const getcountrydata = async () => {
-      const getcountryname = [];
-
-      const reqData = await fetch("http://174.138.101.222:8080/getmastertag");
-      const resData = await reqData.json();
-      // console.log(resData.data);
-      // setCountry(resData.data)
-
-      for (let i = 0; i < resData.data.length; i++) {
-        getcountryname.push(resData.data[i].tag_name);
-      }
-
-      setTags(getcountryname);
-
-      // console.log(getcountryname);
-    };
-
-    getcountrydata();
-  }, []);
-
-
-
-
-
-  /////////////////////////////////////////////////////////////////////////////// Tag get api///////////////////////////////////////////////////////////////////
-
-
-
-
-
+// //  ///////////////////////// /////////////////////get api tag///////////////////////////////////////////////////
 
 
 
@@ -188,25 +160,32 @@ useEffect(() => {
       <Navbar />
       <div className="parentContainer">
         <h1>
-          <span className="pointer" onClick={() => navigate(-1)}>
+          <span onClick={() => navigate(-1)} className="pointer">
             <HiOutlineArrowSmallLeft />
           </span>
-          <span>Edit Draft</span>
+          <span>Edit Reject</span>
         </h1>
 
         <FormControl className="FormControl">
-          <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
+          <InputLabel
+            style={{ fontFamily: "Rooboto" }}
+            id="demo-simple-select-helper-label"
+          >
+            Categories
+          </InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
             label="PLATFORM"
+            placeholder="Category"
             name="category"
+            style={{ fontFamily: "Rooboto" }}
             value={values.category}
             onChange={handleInputChange}
           >
-            {categories?.map((item) => {
+            {category.map((item) => {
               return (
-                <MenuItem key={item._id} value={item.categories_Name_Url}>
+                <MenuItem value={item.categories_Name_English}>
                   {item.categories_Name_English}
                 </MenuItem>
               );
@@ -221,15 +200,15 @@ useEffect(() => {
             config={{
               fontFamily: {
                 options: [
-                  "bhaskar",
-                  // "default",
+                  "default",
                   "Ubuntu, Arial, sans-serif",
                   "Ubuntu Mono, Courier New, Courier, monospace",
+                  "bhaskar, chanakya",
                 ],
               },
               language: "en",
             }}
-            data="<p></p>"
+            data={values.title}
             name="title"
             value={values.title}
             onChange={(event, editor) => {
@@ -241,22 +220,7 @@ useEffect(() => {
             }}
           />
         </div>
-        {/* <div className="ckeditor">
-          <p className="cktitle">Sub Heading *</p>
-          <CKEditor
-            editor={ClassicEditor}
-            data="<p>Hello from CKEditor 5!</p>"
-            name="sub_heading"
-            value={values.sub_heading}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              setValues({
-                ...values,
-                sub_heading: data,
-              });
-            }}
-          />
-        </div> */}
+
         <div className="ckeditor">
           <p className="cktitle">Summary / Short Details *</p>
           <CKEditor
@@ -271,7 +235,7 @@ useEffect(() => {
                 ],
               },
             }}
-            data="<p></p>"
+            data={values.short_details}
             name="short_details"
             value={values.short_details}
             onChange={(event, editor) => {
@@ -290,14 +254,12 @@ useEffect(() => {
             config={{
               fontFamily: {
                 options: [
-                  "bhaskar, chanakya",
-                  "Ubuntu, Arial, sans-serif",
                   "default",
+                  "Ubuntu, Arial, sans-serif",
                   "Ubuntu Mono, Courier New, Courier, monospace",
+                  "bhaskar, chanakya",
                 ],
-                supportAllValues: true,
               },
-              font_defaultLabel: "bhaskar",
             }}
             data={values.body}
             name="body"
@@ -311,19 +273,19 @@ useEffect(() => {
             }}
           />
         </div>
-        {location ? (
-          <img
-            src={location.state.image}
-            style={{
-              height: "300px",
-              width: "92%",
-              objectFit: "contain",
-              margin: "auto",
-              border: "1px solid black",
-            }}
-          />
-        ) : (
-          <TextField
+
+        <img
+          src={location.state.image}
+          style={{
+            height: "300px",
+            width: "92%",
+            objectFit: "contain",
+            margin: "auto",
+            border: "1px solid black",
+          }}
+        />
+
+        {/* <TextField
             id="outlined-basic"
             variant="outlined"
             type="file"
@@ -332,8 +294,7 @@ useEffect(() => {
             // value={values.image}
             name="image"
             onChange={handleInputChange}
-          />
-        )}
+          /> */}
 
         <TextField
           id="outlined-basic"
@@ -353,38 +314,63 @@ useEffect(() => {
           value={values.tags}
           onChange={handleInputChange}
         /> */}
-
-
         <FormControl className="FormControl" method="post">
            <InputLabel
             style={{ fontFamily: "Rooboto" }}
             id="demo-simple-select-helper-label"
           >
-          
           </InputLabel> 
-         
+          {/* <Select
+            // labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Tag"
+            placeholder="Tags/Keywords"
+            name="tags"
+            style={{ fontFamily: "Roboto" }}
+            // multiple // Enable multiple selections
+            value={values.data}
+            // value={selectedTags} // Set the selected tags from state
+            onChange={handleInputChange}
+          >
+            {data?.data?.map((item) => (
+              <MenuItem key={item._id} value={item.tag_name}>
+                {item.tag_name}
+              </MenuItem>
+            ))}
+          
+         </Select>    */}
 
-         
+          {/* <Multiselect
+            isObject={false}
+            onRemove={(event) => {
+              console.log(event);
+            }}
+            onSelect={(event) => {
+              console.log(event);
+            }}
+            options={tags}
+            showCheckbox
+            // labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Tag"
+            placeholder="Tags/Keywords"
+            name="tags"
+            style={{ fontFamily: "Roboto" }}
+            // multiple // Enable multiple selections
+            value={values.tags}
+            // value={selectedTags} // Se t the selected tags from state
+            onChange={handleInputChange}
+          ></Multiselect> */}
           <Multiselect
             isObject={false}
             onSelect={(selectedList) => setSelectedTags(selectedList)}
             onRemove={(selectedList) => setSelectedTags(selectedList)}
             options={tags}
-            showCheckbox
+            showCheckbox 
             value={selectedTags}
-
-
-
-
-
-            
             
           />
         </FormControl>
-
-
-
-
         <FormControl className="FormControl">
           <InputLabel id="demo-simple-select-helper-label">
             News Priority
@@ -454,14 +440,14 @@ useEffect(() => {
           variant="contained"
           className="FormControl "
           onClick={() => {
-            saveHandeler();
+            UpdateHandeler();
           }}
         >
-          Post News
+          Update Reject
         </Button>
       </div>
     </>
   );
 };
 
-export default Addnewsarticle;
+export default EditArticle;

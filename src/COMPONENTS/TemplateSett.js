@@ -23,7 +23,7 @@ const Epaper = () => {
 
         <div className="epaperbox2">
           <div className="epaperheader">
-            <p className="epaperheading">
+            <p style={{fontFamily:'Rooboto'}} className="epaperheading">
               {" "}
               <ArrowBackIcon onClick={() => navigate(-1)} className="pointer" />
               TEMPLATE SETTINGS
@@ -44,7 +44,7 @@ const Epaper = () => {
               autoComplete="off"
             >
               <FormControl>
-                <InputLabel id="demo-simple-select-helper-label">
+                <InputLabel  style={{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                   Vendor Name
                 </InputLabel>
                 <Select
@@ -53,12 +53,12 @@ const Epaper = () => {
                   label="NEWS PAPER"
                   onChange={handleChange}
                 >
-                  <MenuItem value={30}>vendor name</MenuItem>
+                  <MenuItem  style={{fontFamily:'Rooboto'}} value={30}>vendor name</MenuItem>
                 </Select>
               </FormControl>
 
               <FormControl>
-                <InputLabel id="demo-simple-select-helper-label">
+                <InputLabel style={{fontFamily:'Rooboto'}}  id="demo-simple-select-helper-label">
                   Template Name
                 </InputLabel>
                 <Select
@@ -67,7 +67,7 @@ const Epaper = () => {
                   label="NEWS PAPER"
                   onChange={handleChange}
                 >
-                  <MenuItem value={30}>Template</MenuItem>
+                  <MenuItem style={{fontFamily:'Rooboto'}}value={30}>Template</MenuItem>
                 </Select>
               </FormControl>
 
@@ -104,7 +104,7 @@ const Epaper = () => {
          
           {/* <div className="chackbok">   Top   <input type="checkbox" /></div> */}
 
-          <button className="btn btn-primary btn-lg epaperbtn">Submit</button>
+          <button  style={{fontFamily:'Rooboto'}} className="btn btn-primary btn-lg epaperbtn">Submit</button>
         </div>
       </div>
     </>

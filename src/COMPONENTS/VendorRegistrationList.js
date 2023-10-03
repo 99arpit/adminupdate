@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import { Button } from "react-bootstrap";
+import { FaTrash } from "react-icons/fa";
 
 const NewsApproval = () => {
   const navigate = useNavigate();
@@ -37,14 +38,20 @@ const NewsApproval = () => {
 
   ///////////////////////////////////////////////////////////////////////////////////
 
+  //////////////////////////////delete api /////////////////
 
-
-
-
-
-
-
-
+  function deleteUser(_id) {
+    axios
+      .delete(`http://174.138.101.222:8080/${_id}/deleteVendor/`)
+      .then((r) => {
+        console.log(r);
+        getData();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  //////////////////////////////////////////delete api////////////////////
 
   return (
     <>
@@ -54,23 +61,25 @@ const NewsApproval = () => {
           <span>
             <HiOutlineArrowSmallLeft onClick={back} className="pointer" />
           </span>
-          <span>Vendor Registration List</span>
+          <span style={{ fontFamily: "Rooboto" }}>
+            Vendor Registration List
+          </span>
         </h1>
 
         <table>
           <thead>
             <tr>
-              <th>S.No.</th>
-              <th>Publisher Name</th>
-              <th>Email Id</th>
-              <th>Tech Person Contact Name</th>
-              <th>Finance Contact Name</th>
-              <th>Registered Address</th>
-              <th>Communication Address</th>
-              <th>Domain Name</th>
-              <th>Site Display Contact</th>
-              <th>Edit</th>
-              {/* <th>Hide/Show</th> */}
+              <th style={{fontFamily:'Rooboto'}}>S.No.</th>
+              <th style={{fontFamily:'Rooboto'}}>Publisher Name</th>
+              <th style={{fontFamily:'Rooboto'}}>Email Id</th>
+              <th style={{fontFamily:'Rooboto'}}>Tech Person Contact Name</th>
+              <th style={{fontFamily:'Rooboto'}}>Finance Contact Name</th>
+              <th style={{fontFamily:'Rooboto'}}>Registered Address</th>
+              <th style={{fontFamily:'Rooboto'}}>Communication Address</th>
+              <th style={{fontFamily:'Rooboto'}}>Domain Name</th>
+              <th style={{fontFamily:'Rooboto'}}>Site Display Contact</th>
+              <th style={{fontFamily:'Rooboto'}}>Edit</th>
+              <th style={{fontFamily:'Rooboto'}}>Delete</th>
             </tr>
           </thead>
 
@@ -79,17 +88,17 @@ const NewsApproval = () => {
               data.map((item, index) => {
                 return (
                   <tr>
-                    <td>{index + 1}</td>
-                    <td>{item.publisher_name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.tech_name}</td>
-                    <td>{item.finance_name}</td>
-                    <td>{item.regd_address}</td>
-                    <td>{item.comm_address}</td>
-                    <td>{item.domain_name}</td>
-                    <td>{item.site_display_contact}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{index + 1}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.publisher_name}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.email}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.tech_name}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.finance_name}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.regd_address}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.comm_address}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.domain_name}</td>
+                    <td style={{fontFamily:'Rooboto'}}> {item.site_display_contact}</td>
 
-                    <td>
+                    <td style={{fontFamily:'Rooboto'}}>
                       <div>
                         <span
                           className="pointer"
@@ -102,14 +111,11 @@ const NewsApproval = () => {
                         </span>
                       </div>
                     </td>
-                    {/* <td>
-                
-              </td> */}
+                    <td style={{fontFamily:'Rooboto'}}>
+                    <FaTrash onClick={() => deleteUser(item._id)} />
+
+                    </td>
                   </tr>
-
-
-             
-
                 );
               })}
           </tbody>

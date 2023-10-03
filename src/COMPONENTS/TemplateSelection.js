@@ -9,9 +9,8 @@ import img3 from "../COMPONENTS/Image/template_website_3.png";
 import img4 from "../COMPONENTS/Image/template_website_4.PNG";
 import img5 from "../COMPONENTS/Image/template_website_5.png";
 
-
 const TemplateSelection = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const back = () => {
     navigate(-1);
@@ -34,7 +33,7 @@ const TemplateSelection = () => {
         <div className="navbarbox">
           <Navbar />
         </div>
-        <div className="parentContainernew">
+        <div style={{ paddingLeft: "2%" }} className="parentContainernew">
           <h1 className="bg-blue">
             <div
               className="dashwithfav"
@@ -44,23 +43,20 @@ const TemplateSelection = () => {
                 color: "white",
               }}
             >
-              <div>
+              <div style={{ paddingLeft: "1%", paddingBottom: "1%" }}>
                 <span
                   onClick={() => navigate(-1)}
                   className="pointer rightShift"
                 >
-                  <HiOutlineArrowSmallLeft className="rightShift" />
+                  {/* <HiOutlineArrowSmallLeft className="rightShift" /> */}
+                  <span style={{ fontSize: "70%", fontFamily: "Rooboto" }}>
+                    Template Selection
+                  </span>
                 </span>
               </div>
-              <div style={{ marginLeft: "10px", marginTop: "2px" }}>
-                <span>
-                  <HiOutlineArrowSmallLeft onClick={back} />
-                </span>
 
-                <span style={{ fontSize: "70%" }}>Template Selection</span>
-              </div>
-
-              {/* <div className="parentContainertableu">
+              {/* 
+              <div  className="parentContainertableu">
           <h1>
             <span>
               <HiOutlineArrowSmallLeft
@@ -77,11 +73,11 @@ const TemplateSelection = () => {
               </div>
             </div>
           </h1>
-            <h5 className="px-4" style={{ marginTop: "15px" }}>
-              To use any of the available Template in your website , just simply
-              update the record in your domain DNS configuration with the url
-              provided in the Template below.
-            </h5>
+          <h5 className="px-4" style={{ marginTop: "15px",fontFamily:'Rooboto' }}>
+            To use any of the available Template in your website , just simply
+            update the record in your domain DNS configuration with the url
+            provided in the Template below.
+          </h5>
 
           <div className="container" style={{ marginTop: "15px" }}>
             <div className="row" style={{ marginTop: "15px" }}>
@@ -96,7 +92,7 @@ const TemplateSelection = () => {
                     height={"200px"}
                   />
                   <div className="card-body">
-                    <h5 className="card-title d-flex justify-content-center font-weight-bold">
+                    <h5 style={{fontFamily:'Rooboto'}} className="card-title d-flex justify-content-center font-weight-bold">
                       Template 1
                     </h5>
                     <a className="card-text d-flex justify-content-center">
@@ -116,7 +112,7 @@ const TemplateSelection = () => {
                     height={"200px"}
                   />
                   <div className="card-body">
-                    <h5 className="card-title d-flex justify-content-center font-weight-bold">
+                    <h5  style={{fontFamily:'Rooboto'}} className="card-title d-flex justify-content-center font-weight-bold">
                       Template 2
                     </h5>
                     <a className="card-text d-flex justify-content-center">
@@ -139,7 +135,7 @@ const TemplateSelection = () => {
                     height={"200px"}
                   />
                   <div className="card-body">
-                    <h5 className="card-title d-flex justify-content-center font-weight-bold">
+                    <h5 style={{fontFamily:'Rooboto'}}zz className="card-title d-flex justify-content-center font-weight-bold">
                       Template 3
                     </h5>
                     <a className="card-text d-flex justify-content-center">
@@ -159,7 +155,7 @@ const TemplateSelection = () => {
                     height={"200px"}
                   />
                   <div className="card-body">
-                    <h5 className="card-title d-flex justify-content-center font-weight-bold">
+                    <h5  style={{fontFamily:'Rooboto'}}className="card-title d-flex justify-content-center font-weight-bold">
                       Template 4
                     </h5>
                     <a className="card-text d-flex justify-content-center ">
@@ -181,7 +177,7 @@ const TemplateSelection = () => {
                     height={"200px"}
                   />
                   <div className="card-body">
-                    <h5 className="card-title d-flex justify-content-center font-weight-bold">
+                    <h5 style={{fontFamily:'Rooboto'}} className="card-title d-flex justify-content-center font-weight-bold">
                       Template 5
                     </h5>
                     <a className="card-text d-flex justify-content-center">

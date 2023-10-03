@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import { FiEye } from "react-icons/fi";
-
+import { FaTrash } from "react-icons/fa";
 
 const NewsApproval = () => {
   const navigate = useNavigate();
@@ -36,13 +36,20 @@ const NewsApproval = () => {
 
   ///////////////////////////////////////////////////////////////////////////////////
 
+  //////////////////////////////delete api /////////////////
 
-// function deleteUser(id)
-// {
-//   alert(id)
-// }
-
-
+  function deleteUser(_id) {
+    axios
+      .delete(`http://174.138.101.222:8080/${_id}/deletecategories/`)
+      .then((r) => {
+        console.log(r);
+        getData();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  //////////////////////////////////////////delete api////////////////////
 
   return (
     <>
@@ -52,19 +59,18 @@ const NewsApproval = () => {
           <span>
             <HiOutlineArrowSmallLeft onClick={back} className="pointer" />
           </span>
-          <span>Category List</span>
+          <span style={{fontFamily:'Rooboto'}}>Category List</span>
         </h1>
 
         <table>
           <thead>
             <tr>
-              <th>S.No.</th>
-              <th>Category Name Hindi</th>
-              <th>Category Name English</th>
-              <th>Category Name URL</th>
-              <th>Update</th>
-              {/* <th>Delete</th> */}
-
+              <th style={{fontFamily:'Rooboto'}}>S.No.</th>
+              <th style={{fontFamily:'Rooboto'}}>Category Name Hindi</th>
+              <th style={{fontFamily:'Rooboto'}}>Category Name English</th>
+              <th style={{fontFamily:'Rooboto'}}>Category Name URL</th>
+              <th style={{fontFamily:'Rooboto'}}>Update</th>
+              <th style={{fontFamily:'Rooboto'}}>Delete</th>
             </tr>
           </thead>
 
@@ -73,44 +79,33 @@ const NewsApproval = () => {
               data.map((item, index) => {
                 return (
                   <tr>
-                    <td>{index + 1}</td>
-                    <td>{item.categories_Name_Hindi}</td>
-                    <td>{item.categories_Name_English}</td>
-                    <td>{item.categories_Name_Url}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{index + 1}</td>
+                    <td style={{fontFamily:'Rooboto'}}> {item.categories_Name_Hindi}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.categories_Name_English}</td>
+                    <td style={{fontFamily:'Rooboto'}}>{item.categories_Name_Url}</td>
 
                     <td>
-                       
-                    
-                        <div>
-                          <span
-                            className="pointer"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate("/updateCat", { state: item });
-                            }}  
-                          >
-                            <FaEdit />
-                          </span>
-                         
-                          
-                          
-                        </div>
-                                          
-                      
+                      <div>
+                        <span
+                          className="pointer"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate("/updateCat", { state: item });
+                          }}
+                        >
+                          <FaEdit />
+                        </span>
+                      </div>
                     </td>
 
-{/* <td><button onClick={()=> deleteUser(item._id)}>Delete</button></td> */}
+                    <td>
+                    <FaTrash onClick={() => deleteUser(item._id)} />
 
-
-
-
-                    
+                    </td>
                   </tr>
                 );
               })}
           </tbody>
-
-        
 
           <tfoot></tfoot>
         </table>

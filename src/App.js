@@ -35,6 +35,9 @@ import UpdateVendorList from "./COMPONENTS/UpdateVendorList";
 import UpdateRoleBasedUserList from "./COMPONENTS/UpdateRoleBasedUserList";
 import AdvertisementList from "./COMPONENTS/AdvertisementList";
 import TemplateSelection from "./COMPONENTS/TemplateSelection";
+import EditAP from "./COMPONENTS/EditAP";
+import EditReject from "./COMPONENTS/EditReject";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -46,7 +49,10 @@ const App = () => {
         <Route path="/news-approval" element={<NewsApproval />} />
         <Route path="/viewNews" element={<ViewNews />} />
         <Route path="/addNewsArticle" element={<Addnewsarticle />} />
-        <Route path="/editDraft" element={<EditDraft />} />
+        <Route path="/EditDraft" element={<EditDraft />} />
+        <Route path="/EditAP" element={<EditAP />} />
+        <Route path="/EditReject" element={<EditReject />} />
+
         <Route path="/editArticle" element={<EditArticle />} />
         <Route path="/updateCat" element={<UpdateCat />} />
         <Route path="/epaper" element={<Epaper />} />
@@ -86,6 +92,7 @@ const App = () => {
           element={<NewsAgencyAddnewsarticle />}
         />
       </Routes>
+
     </BrowserRouter>
   );
 };

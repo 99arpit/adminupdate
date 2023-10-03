@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "../CSS/EditArticle.module.scss";
 import Navbar from "./Navbar";
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
@@ -15,6 +15,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import categories from "../Masters/Categories";
+import Multiselect from "multiselect-react-dropdown";
 
 const EditArticle = () => {
   const location = useLocation();
@@ -43,6 +44,7 @@ const EditArticle = () => {
   };
 
   const [values, setValues] = useState(initialValues);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -54,12 +56,16 @@ const EditArticle = () => {
   ///////////////////////////////// To send Update request ///////////////////////////////////////
 
   const UpdateHandeler = () => {
-    // let formdata = new FormData();
-    // for (const key in values) {
-    //   if (values.hasOwnProperty(key)) {
-    //     formdata.append(key, values[key]);
-    //   }
-    // }
+    let formdata = new FormData();
+    for (const key in values) {
+      if (values.hasOwnProperty(key)) {
+        if (key === "tags") {
+          formdata.append(key, JSON.stringify(selectedTags));
+        } else{
+        formdata.append(key, values[key]);
+        }
+      }
+    }
     // console.log(values);
     // console.log(formdata);
     axios({
@@ -82,6 +88,73 @@ const EditArticle = () => {
   };
   ///////////////////////////////// To send axios request ///////////////////////////////////////
 
+
+
+
+
+
+
+
+///////////////////////////// /////get api getmastercategories/////////////////////////////////////////////////////////////
+
+const [category, setCategory] = useState([]);
+useEffect(() => {
+  fetch("http://174.138.101.222:8080/getmastercategories").then((result) => {
+    result.json().then((resp) => {
+      setCategory(resp.data);
+    });
+  });
+}, []);
+console.log(category);
+
+////////////////////////////////////////////////// /////get api getmastercategories/////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////get api tag///////////////////////////////////////////////////
+
+
+const [tags, setTags] = useState([]);
+
+useEffect(() => {
+  const getcountrydata = async () => {
+    const getcountryname = [];
+
+    const reqData = await fetch("http://174.138.101.222:8080/getmastertag");
+    const resData = await reqData.json();
+    // console.log(resData.data);
+    // setCountry(resData.data)
+
+    for (let i = 0; i < resData.data.length; i++) {
+      getcountryname.push(resData.data[i].tag_name);
+    }
+
+    setTags(getcountryname);
+
+    // console.log(getcountryname);
+  };
+
+  getcountrydata();
+}, []);
+
+// //  ///////////////////////// /////////////////////get api tag///////////////////////////////////////////////////
+
+
+
+
+
+
+
+
   return (
     <>
       <Navbar />
@@ -94,19 +167,28 @@ const EditArticle = () => {
         </h1>
 
         <FormControl className="FormControl">
-          <InputLabel id="demo-simple-select-helper-label">
-            {location ? location.state.category : "Category"}
+          <InputLabel
+            style={{ fontFamily: "Rooboto" }}
+            id="demo-simple-select-helper-label"
+          >
+            Categories
           </InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
             label="PLATFORM"
+            placeholder="Category"
             name="category"
+            style={{ fontFamily: "Rooboto" }}
             value={values.category}
             onChange={handleInputChange}
           >
-            {categories.map((item) => {
-              return <MenuItem value={item}>{item}</MenuItem>;
+            {category.map((item) => {
+              return (
+                <MenuItem value={item.categories_Name_English}>
+                  {item.categories_Name_English}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>
@@ -223,7 +305,7 @@ const EditArticle = () => {
           value={values.url}
           onChange={handleInputChange}
         />
-        <TextField
+        {/* <TextField
           id="outlined-basic"
           label="Tags/Keywords"
           variant="outlined"
@@ -231,7 +313,64 @@ const EditArticle = () => {
           name="tags"
           value={values.tags}
           onChange={handleInputChange}
-        />
+        /> */}
+        <FormControl className="FormControl" method="post">
+           <InputLabel
+            style={{ fontFamily: "Rooboto" }}
+            id="demo-simple-select-helper-label"
+          >
+          </InputLabel> 
+          {/* <Select
+            // labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Tag"
+            placeholder="Tags/Keywords"
+            name="tags"
+            style={{ fontFamily: "Roboto" }}
+            // multiple // Enable multiple selections
+            value={values.data}
+            // value={selectedTags} // Set the selected tags from state
+            onChange={handleInputChange}
+          >
+            {data?.data?.map((item) => (
+              <MenuItem key={item._id} value={item.tag_name}>
+                {item.tag_name}
+              </MenuItem>
+            ))}
+          
+         </Select>    */}
+
+          {/* <Multiselect
+            isObject={false}
+            onRemove={(event) => {
+              console.log(event);
+            }}
+            onSelect={(event) => {
+              console.log(event);
+            }}
+            options={tags}
+            showCheckbox
+            // labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Tag"
+            placeholder="Tags/Keywords"
+            name="tags"
+            style={{ fontFamily: "Roboto" }}
+            // multiple // Enable multiple selections
+            value={values.tags}
+            // value={selectedTags} // Se t the selected tags from state
+            onChange={handleInputChange}
+          ></Multiselect> */}
+          <Multiselect
+            isObject={false}
+            onSelect={(selectedList) => setSelectedTags(selectedList)}
+            onRemove={(selectedList) => setSelectedTags(selectedList)}
+            options={tags}
+            showCheckbox 
+            value={selectedTags}
+            
+          />
+        </FormControl>
         <FormControl className="FormControl">
           <InputLabel id="demo-simple-select-helper-label">
             News Priority

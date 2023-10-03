@@ -5,8 +5,9 @@ import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
-// import { useTable, usePagination } from 'react-table';     
+import { FaTrash } from "react-icons/fa";
 
+// import { useTable, usePagination } from 'react-table';
 
 const NewsApproval = () => {
   const navigate = useNavigate();
@@ -36,6 +37,21 @@ const NewsApproval = () => {
 
   ///////////////////////////////////////////////////////////////////////////////////
 
+  //////////////////////////////delete api ////////////////////////////////
+
+  function deleteUser(_id) {
+    axios
+      .delete(`http://174.138.101.222:8080/${_id}/deleteTag/`)
+      .then((r) => {
+        console.log(r);
+        getData();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  //////////////////////////////////////////delete api////////////////////
+
   return (
     <>
       <Navbar />
@@ -48,7 +64,7 @@ const NewsApproval = () => {
                 className="pointertable"
               />
             </span>
-            <span>Tag List</span>
+            <span style={{ fontFamily: "Rooboto" }}>Tag List</span>
           </h1>
         </div>
 
@@ -56,9 +72,10 @@ const NewsApproval = () => {
           <table>
             <thead>
               <tr>
-                <th>S.No.</th>
-                <th>Tag List</th>
-                <th>Update</th>
+                <th style={{fontFamily:'Rooboto'}}>S.No.</th>
+                <th style={{fontFamily:'Rooboto'}}>Tag List</th>
+                <th style={{fontFamily:'Rooboto'}}>Update</th>
+                <th style={{fontFamily:'Rooboto'}}>Delete</th>
               </tr>
             </thead>
 
@@ -67,9 +84,9 @@ const NewsApproval = () => {
                 data.map((item, index) => {
                   return (
                     <tr>
-                      <td>{index + 1}</td>
-                      <td>{item.tag_name}</td>
-                      <td>
+                      <td style={{fontFamily:'Rooboto'}}>{index + 1}</td>
+                      <td style={{fontFamily:'Rooboto'}}>{item.tag_name}</td>
+                      <td style={{fontFamily:'Rooboto'}}>
                         <div>
                           <span
                             className="pointer"
@@ -82,37 +99,30 @@ const NewsApproval = () => {
                           </span>
                         </div>
                       </td>
+                      <td style={{fontFamily:'Rooboto'}}>
+                        <FaTrash onClick={() => deleteUser(item._id)} />
+                      </td>
                     </tr>
                   );
                 })}
             </tbody>
-
-            
           </table>
-
-        
-
-
         </div>
-
 
         <div className="pagination">
           <button
-            // onClick={() => handlePageChange(currentPage - 1)}
-            // disabled={currentPage === 1}
+          // onClick={() => handlePageChange(currentPage - 1)}
+          // disabled={currentPage === 1}
           >
             Previous
           </button>
           <button
-            // onClick={() => handlePageChange(currentPage + 1)}
-            // disabled={endIndex >= data.length}
+          // onClick={() => handlePageChange(currentPage + 1)}
+          // disabled={endIndex >= data.length}
           >
             Next
           </button>
         </div>
-
-
-
       </div>
     </>
   );

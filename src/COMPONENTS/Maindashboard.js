@@ -1,19 +1,54 @@
-import React from "react";
 import "../CSS/Maindashboard.css";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import Progress from "../Images/Progressbar.png";
 import AdMgmt from "../Images/AdMgmt.png";
-
 const Maindashboard = () => {
+
+  const [style, setStyle] = useState("navbarbox");
+
+
+  const changeStyle = () => {
+    setStyle((prev) => {
+      if (prev === 'navbarbox') {
+        setStyle('navbarbox2')
+        setStyle('dashbox ')
+      } else{ setStyle('navbarbox')
+      setStyle('dashbox1')}
+    });
+  }
+
+  const changeStyle1 = () => {
+    setStyle((prev) => {
+      if (prev === 'navbarbox') { setStyle('navbarbox2')
+        setStyle('dashbox ')
+      } else{ 
+      setStyle('dashbox1')}
+    });
+  }
+
+
+ 
+
   return (
     <>
       <div className="maindashboard">
-        <div className="navbarbox">
+        <div className={style}>
           <Navbar />
         </div>
+
+       
         <div className="dashbox ">
-          <p className="dashboardtext">MAIN DASHBOARD</p>
+
+        
+          <p style={{ fontFamily: "Roboto",}} className="dashboardtext">
+          <div style={{ marginRight:"1%"}} >
+          <button onClick={changeStyle}>Bars</button>
+        </div>
+        <div>MAIN DASHBOARD</div>
+            
+          </p>
           <div className="userstatuscontainer">
             <div className="userstatusbox3">
               <div className="iconscontainer">
@@ -23,7 +58,7 @@ const Maindashboard = () => {
                 />
               </div>
 
-              <p className="userstatusboxcontant">
+              <p style={{fontFamily:'Rooboto'}} className="userstatusboxcontant">
                 No of users
                 <br />
                 <span>154.3k</span>
@@ -36,7 +71,7 @@ const Maindashboard = () => {
                   color="info"
                 />
               </div>
-              <p className="userstatusboxcontant">
+              <p style={{fontFamily:'Rooboto'}}className="userstatusboxcontant">
                 News Paper agencies
                 <br />
                 <span>154.3k</span>
@@ -49,7 +84,7 @@ const Maindashboard = () => {
                   color="info"
                 />
               </div>
-              <p className="userstatusboxcontant">
+              <p style={{fontFamily:'Rooboto'}} className="userstatusboxcontant">
                 No of Subadmin
                 <br />
                 <span>154.3k</span>
@@ -73,18 +108,18 @@ const Maindashboard = () => {
               <img src={Progress} alt="" className="progress" />
             </div>
             <div className="userstatusbox4">
-              <p className="E-PAPER-MODULE-text">E-PAPER MODULE</p>
+              <p style={{fontFamily:'Rooboto'}} className="E-PAPER-MODULE-text">E-PAPER MODULE</p>
 
               <li className="epapermoduleli">
-                <span>News count</span>
-                <span className="epapermodulespan">300+</span>
+                <span style={{fontFamily:'Rooboto'}}>News count</span>
+                <span style={{fontFamily:'Rooboto'}}className="epapermodulespan">300+</span>
               </li>
               <li className="epapermoduleli">
-                <span>Web</span> <span className="epapermodulespan">300+</span>
+                <span style={{fontFamily:'Rooboto'}}>Web</span> <span style={{fontFamily:'Rooboto'}} className="epapermodulespan">300+</span>
               </li>
               <li className="epapermoduleli">
-                <span>Mobile</span>
-                <span className="epapermodulespan">300+</span>
+                <span style={{fontFamily:'Rooboto'}}>Mobile</span>
+                <span style={{fontFamily:'Rooboto'}}className="epapermodulespan">300+</span>
               </li>
             </div>
           </div>
@@ -96,7 +131,7 @@ const Maindashboard = () => {
                 src="https://static.startuptalky.com/2022/02/Times-of-India-Campaigns-StartupTalky.jpg"
                 alt="no-image"
               />
-              <p className="toideccription">
+              <p style={{fontFamily:'Rooboto'}}className="toideccription">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               </p>
@@ -107,13 +142,13 @@ const Maindashboard = () => {
                 src="https://static.startuptalky.com/2022/02/Times-of-India-Campaigns-StartupTalky.jpg"
                 alt="no-image"
               />
-              <p className="toideccription">
+              <p style={{fontFamily:'Rooboto'}}className="toideccription">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               </p>
             </div>
             <div className="userstatusbox54  ">
-              <img className="adimage" src={AdMgmt} alt="no-image" />
+              <img  className="adimage" src={AdMgmt} alt="no-image" />
             </div>
           </div>
         </div>

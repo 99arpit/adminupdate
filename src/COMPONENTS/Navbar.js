@@ -16,13 +16,16 @@ const Navbar = () => {
         <img src="\images\newspaperwala logo (1).png" className="newslogo" />
 
         <Link to={"/dashboard"}>
-          <p className="dashboard">MAIN DASHBOARD</p>
+          <p style={{ fontFamily: "Roboto" }} className="dashboard">
+            MAIN DASHBOARD
+          </p>
         </Link>
 
         {/* REGISTRATION DROPDOWN START  */}
 
         <div className="dropdown dropdowns">
           <p
+            style={{ fontFamily: "Roboto" }}
             className=" dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
@@ -35,10 +38,14 @@ const Navbar = () => {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <Link to="/role">
               {" "}
-              <p className="dropdown-item">ROLE BASED USER</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                ROLE BASED USER
+              </p>
             </Link>
             <Link to="/vendor">
-              <p className="dropdown-item">VENDOR REGISTRATION</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                VENDOR REGISTRATION
+              </p>
             </Link>
           </div>
         </div>
@@ -72,6 +79,7 @@ const Navbar = () => {
 
         <div className="dropdown dropdowns">
           <p
+            style={{ fontFamily: "Roboto" }}
             className=" dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
@@ -85,10 +93,18 @@ const Navbar = () => {
             {/* <Link to={"/viewNews"} className="dropdown-item">
               VIEW NEWS
             </Link> */}
-            <Link to={"/news-approval"} className="dropdown-item">
+            <Link
+              to={"/news-approval"}
+              className="dropdown-item"
+              style={{ fontFamily: "Roboto" }}
+            >
               APPROVE NEWS
             </Link>
-            <Link to={"/addNewsArticle"} className="dropdown-item">
+            <Link
+              to={"/addNewsArticle"}
+              className="dropdown-item"
+              style={{ fontFamily: "Roboto" }}
+            >
               ADD NEWS ARTICLE
             </Link>
             {/* <a className="dropdown-item" href="#">
@@ -103,6 +119,7 @@ const Navbar = () => {
 
         <div className="dropdown dropdowns">
           <p
+            style={{ fontFamily: "Roboto" }}
             className=" dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
@@ -113,11 +130,13 @@ const Navbar = () => {
             AD MANAGEMENT
           </p>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <Link to={"/create-ad"} className="dropdown-item">
+            <Link
+              to={"/create-ad"}
+              className="dropdown-item"
+              style={{ fontFamily: "Roboto" }}
+            >
               CREATE AN AD
             </Link>
-           
-           
           </div>
         </div>
 
@@ -156,6 +175,7 @@ const Navbar = () => {
         {/* ROLES DROPDOWN START  */}
         <div className="dropdown dropdowns">
           <p
+            style={{ fontFamily: "Roboto" }}
             className=" dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
@@ -169,7 +189,11 @@ const Navbar = () => {
             {/* <a className="dropdown-item" href="#">
               ROLES MANAGEMENT
             </a> */}
-            <Link to={"/RoleManagement"} className="dropdown-item">
+            <Link
+              to={"/RoleManagement"}
+              className="dropdown-item"
+              style={{ fontFamily: "Roboto" }}
+            >
               ROLES MANAGEMENT
             </Link>
             {/* <a className="dropdown-item" href="#">
@@ -184,7 +208,9 @@ const Navbar = () => {
 
         <div className="dropdown dropdowns">
           <Link to={"/epaper"}>
-            <p className="epaper">E-Paper</p>
+            <p style={{ fontFamily: "Roboto" }} className="epaper">
+              E-PAPER
+            </p>
           </Link>
           {/* <p
             className=" dropdown-toggle"
@@ -210,6 +236,7 @@ const Navbar = () => {
 
         <div className="dropdown dropdowns">
           <p
+            style={{ fontFamily: "Roboto" }}
             className=" dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
@@ -222,19 +249,26 @@ const Navbar = () => {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <Link to="/categorys">
               {" "}
-              <p className="dropdown-item">Category</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Category
+              </p>
             </Link>
             <Link to="/tags">
-              <p className="dropdown-item">Tags</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Tags
+              </p>
             </Link>
             <Link to="/location">
-              <p className="dropdown-item">Location</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Location
+              </p>
             </Link>
           </div>
         </div>
 
         <div className="dropdown dropdowns">
           <p
+            style={{ fontFamily: "Roboto" }}
             className=" dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
@@ -247,25 +281,36 @@ const Navbar = () => {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <Link to="/rolebaseduserlist">
               {" "}
-              <p className="dropdown-item">Role Based User List</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Role Based User List
+              </p>
             </Link>
             <Link to="/vendorregistrationlist">
-              <p className="dropdown-item">Vendor Registration List</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Vendor Registration List
+              </p>
             </Link>
             <Link to="/categorylist">
-              <p className="dropdown-item">Category List</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Category List
+              </p>
             </Link>
             <Link to="/taglist">
-              <p className="dropdown-item">Tag List</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Tag List
+              </p>
             </Link>
             <Link to="/advertisementlist">
-              <p className="dropdown-item">Advertisement List</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Advertisement List
+              </p>
             </Link>
           </div>
         </div>
 
         <div className="dropdown dropdowns">
           <p
+            style={{ fontFamily: "Roboto" }}
             className=" dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
@@ -277,19 +322,27 @@ const Navbar = () => {
           </p>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <Link to="/templatesett">
-              <p className="dropdown-item">Template</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Template
+              </p>
             </Link>
             <Link to="/advertisement">
-              <p className="dropdown-item">Advertisement Setting</p>
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Advertisement Setting
+              </p>
             </Link>
-            <Link to="/categorysetting">
-              <p className="dropdown-item">Category Setting</p>
-            </Link>
+            {/* <Link to="/categorysetting">
+              <p style={{ fontFamily: "Roboto" }} className="dropdown-item">
+                Category Setting
+              </p>
+            </Link> */}
           </div>
         </div>
 
-        <Link  to={"/Template_selection"}>
-          <p className="dashboard">TEMPLATE SELECTION</p>
+        <Link to={"/Template_selection"}>
+          <p style={{ fontFamily: "Roboto" }} className="dashboard">
+            TEMPLATE SELECTION
+          </p>
         </Link>
 
         {/* <Link to={"/Template_selection"} className="dropdown-item">
@@ -297,7 +350,9 @@ const Navbar = () => {
             </Link> */}
 
         <Link onClick={logout} to={"/"}>
-          <p className="dashboard">LOGOUT</p>
+          <p style={{ fontFamily: "Roboto" }} className="dashboard">
+            LOGOUT
+          </p>
         </Link>
       </div>
     </>

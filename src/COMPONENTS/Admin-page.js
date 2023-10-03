@@ -49,7 +49,7 @@ const AdminPage = () => {
         <div className="adminformdiv">
           <div>
             {" "}
-            <p className="adminlogin">Admin Login</p>
+            <p  className="adminlogin">Admin Login</p>
             <div className="hrrow">
               <hr className="hr1" />
               <p className="or"> or </p>

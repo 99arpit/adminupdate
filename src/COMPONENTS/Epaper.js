@@ -100,7 +100,7 @@ const Epaper = () => {
 
         <div className="epaperbox2">
           <div className="epaperheader">
-            <p className="epaperheading">
+            <p className="epaperheading" style={{fontFamily:'Rooboto'}}>
               {" "}
               <ArrowBackIcon onClick={() => navigate(-1)} className="pointer" />
               E-PAPER
@@ -120,7 +120,7 @@ const Epaper = () => {
               noValidate
               autoComplete="off"
             >
-              <TextField id="outlined-basic" label="NAME" variant="outlined" />
+              <TextField  id="outlined-basic" label="NAME" variant="outlined" />
               <TextField id="outlined-basic" label="STATE" variant="outlined" />
               <TextField id="outlined-basic" label="CITY" variant="outlined" />
               <TextField
@@ -140,7 +140,7 @@ const Epaper = () => {
               />
 
               <FormControl>
-                <InputLabel id="demo-simple-select-helper-label">
+                <InputLabel  id="demo-simple-select-helper-label">
                   CATEGORY
                 </InputLabel>
                 <Select
@@ -151,11 +151,11 @@ const Epaper = () => {
                   onChange={handleChange}
                 >
                   <MenuItem value="">
-                    <em>None</em>
+                    <em  style={{fontFamily:'Rooboto'}}>None</em>
                   </MenuItem>
                   {
                     data?.data?.map((item) => (
-                    <MenuItem
+                    <MenuItem  style={{fontFamily:'Rooboto'}}
                       key={item._id}
                       value={item.categories_Name_English}
                     >
@@ -163,9 +163,9 @@ const Epaper = () => {
                     </MenuItem>
                   ))
                   }
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem   style={{fontFamily:'Rooboto'}}value={10}>Ten</MenuItem>
+                  <MenuItem   style={{fontFamily:'Rooboto'}}value={20}>Twenty</MenuItem>
+                  <MenuItem  style={{fontFamily:'Rooboto'}} value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
               <FormControl>
@@ -182,9 +182,9 @@ const Epaper = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem  style={{fontFamily:'Rooboto'}} value={10}>Ten</MenuItem>
+                  <MenuItem  style={{fontFamily:'Rooboto'}} value={20}>Twenty</MenuItem>
+                  <MenuItem  style={{fontFamily:'Rooboto'}} value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
               <FormControl>
@@ -198,10 +198,10 @@ const Epaper = () => {
                   label="NEWS PAPER"
                   onChange={handleChange}
                 >
-                  <MenuItem value={""}>None</MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem   style={{fontFamily:'Rooboto'}}value={""}>None</MenuItem>
+                  <MenuItem   style={{fontFamily:'Rooboto'}} value={10}>Ten</MenuItem>
+                  <MenuItem  style={{fontFamily:'Rooboto'}} value={20}>Twenty</MenuItem>
+                  <MenuItem   style={{fontFamily:'Rooboto'}}value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -221,7 +221,7 @@ const Epaper = () => {
             <div className="inputpdf">
               <label htmlFor="inputSinglePdf" className="inputTaglabel">
                 {singlePdf} <PictureAsPdfIcon className="pdficon" />
-                <p className="pdftext">SINGLE PAGE PDF</p>
+                <p  style={{fontFamily:'Rooboto'}} className="pdftext">SINGLE PAGE PDF</p>
               </label>
               <input
                 type="file"
@@ -238,7 +238,7 @@ const Epaper = () => {
             <div className="inputpdf">
               <label htmlFor="inputMultiPdf" className="inputTaglabel">
                 {multiPdf} <PictureAsPdfIcon className="pdficon" />
-                <p className="pdftext">MULTIPLE PAGE PDF</p>
+                <p   style={{fontFamily:'Rooboto'}}className="pdftext">MULTIPLE PAGE PDF</p>
               </label>
 
               <input
@@ -254,7 +254,7 @@ const Epaper = () => {
             </div>
           </div>
 
-          <button
+          <button  style={{fontFamily:'Rooboto'}}
             className="btn btn-primary btn-lg epaperbtn"
             onClick={() => fetchPageSize()}
           >

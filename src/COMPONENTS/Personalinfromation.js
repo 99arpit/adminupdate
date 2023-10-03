@@ -105,10 +105,10 @@ const Personalinfromation = () => {
       case 1:
         return (
           <div className="personalcontainer">
-            <p className="personaltext">LOGIN & NAME</p>
+            <p style= {{fontFamily:'Rooboto'}} className="personaltext">LOGIN & NAME</p>
             <div className="formbox">
               <div className="formbox1">
-                <TextField
+                <TextField  
                   id="standard-basic"
                   label="USER NAME *"
                   name="user_name"
@@ -200,7 +200,7 @@ const Personalinfromation = () => {
                   variant="standard"
                   className="personalinput"
                 />
-                <button className=" btn  personalbtn" onClick={goToNextStep}>
+                <button  style= {{fontFamily:'Rooboto'}} className=" btn  personalbtn" onClick={goToNextStep}>
                   Next
                 </button>
               </div>
@@ -210,7 +210,7 @@ const Personalinfromation = () => {
       case 2:
         return (
           <div className="personalcontainer">
-            <p className="personaltext">CONTACT DETAILS</p>
+            <p  style= {{fontFamily:'Rooboto'}}className="personaltext">CONTACT DETAILS</p>
             <div className="formbox">
               <div className="formbox1">
                 <TextField
@@ -267,13 +267,13 @@ const Personalinfromation = () => {
                   variant="standard"
                   className="personalinput"
                 />
-                <button className="btn previousbtn" onClick={goToPreviousStep}>
+                <button  style= {{fontFamily:'Rooboto'}} className="btn previousbtn" onClick={goToPreviousStep}>
                   Previous
                 </button>
               </div>
               <div className="formbox1">
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     COUNTRIES
                   </InputLabel>
                   <Select
@@ -284,7 +284,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.countries}>
@@ -295,7 +295,7 @@ const Personalinfromation = () => {
                 </FormControl>
 
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     STATE
                   </InputLabel>
                   <Select
@@ -306,7 +306,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.states}>
@@ -317,7 +317,7 @@ const Personalinfromation = () => {
                 </FormControl>
 
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     CITY
                   </InputLabel>
                   <Select
@@ -328,7 +328,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.division}>
@@ -339,7 +339,7 @@ const Personalinfromation = () => {
                 </FormControl>
 
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     DIVISION
                   </InputLabel>
                   <Select
@@ -350,7 +350,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.district}>
@@ -361,7 +361,7 @@ const Personalinfromation = () => {
                 </FormControl>
 
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     DISTRICT
                   </InputLabel>
                   <Select
@@ -372,7 +372,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.sub_division}>
@@ -383,7 +383,7 @@ const Personalinfromation = () => {
                 </FormControl>
 
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     SUB DIVISION
                   </InputLabel>
                   <Select
@@ -394,7 +394,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.tahsil}>
@@ -405,7 +405,7 @@ const Personalinfromation = () => {
                 </FormControl>
 
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     THASIL
                   </InputLabel>
                   <Select
@@ -416,7 +416,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.tahsil}>
@@ -427,7 +427,7 @@ const Personalinfromation = () => {
                 </FormControl>
 
                 <FormControl>
-                  <InputLabel id="demo-simple-select-helper-label">
+                  <InputLabel  style= {{fontFamily:'Rooboto'}} id="demo-simple-select-helper-label">
                     TOWN
                   </InputLabel>
                   <Select
@@ -438,7 +438,7 @@ const Personalinfromation = () => {
                     // onChange={handleChange}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em  style= {{fontFamily:'Rooboto'}}>None</em>
                     </MenuItem>
                     {data?.data?.map((item) => (
                       <MenuItem key={item._id} value={item.Town}>
@@ -448,7 +448,7 @@ const Personalinfromation = () => {
                   </Select>
                 </FormControl>
 
-                <button className="btn personalbtn" onClick={goToNextStep}>
+                <button  style= {{fontFamily:'Rooboto'}} className="btn personalbtn" onClick={goToNextStep}>
                   Next
                 </button>
               </div>
@@ -458,7 +458,7 @@ const Personalinfromation = () => {
       case 3:
         return (
           <div className="personalcontainer">
-            <p className="personaltext">SOCIAL & BIO</p>
+            <p  style= {{fontFamily:'Rooboto'}} className="personaltext">SOCIAL & BIO</p>
             <div className="formbox">
               <div className="formbox1">
                 <TextField
@@ -488,7 +488,7 @@ const Personalinfromation = () => {
                   variant="standard"
                   className="personalinput"
                 />
-                <button className="btn previousbtn" onClick={goToPreviousStep}>
+                <button  style= {{fontFamily:'Rooboto'}}className="btn previousbtn" onClick={goToPreviousStep}>
                   Previous
                 </button>
               </div>
@@ -520,7 +520,7 @@ const Personalinfromation = () => {
                   variant="standard"
                   className="personalinput"
                 />
-                <button className="btn personalbtn" type="submit">
+                <button  style= {{fontFamily:'Rooboto'}}className="btn personalbtn" type="submit">
                   Submit
                 </button>
               </div>
@@ -543,33 +543,40 @@ const Personalinfromation = () => {
             <p className="rolebasedheading">
               <div>
                 <h1>
-                  <span>
+                  {/* <span>
                     <HiOutlineArrowSmallLeft
                       onClick={back}
                       // className="pointertable"
                     />
+                  </span> */}
+                  <span
+                    style={{ fontSize: "60%", fontFamily: "Roboto" }}
+                  >
+                    ROLE BASED USER
                   </span>
-                  <span style={{ fontSize: "60%" }}>ROLE BASED USER</span>
                 </h1>
               </div>
             </p>
           </div>
           <div className="col-sm-12 buttongroup">
             <button
+            style={{ fontFamily: "Roboto"}}
               onClick={() => setStep(1)}
               class="btn rolebtn"
               type="submit"
             >
               LOGIN & NAME
             </button>
-            <button
+            <button             style={{ fontFamily: "Roboto"}}
+
               onClick={() => setStep(2)}
               class="btn  rolebtn"
               type="submit"
             >
               CONTACT DETAILS
             </button>
-            <button
+            <button             style={{ fontFamily: "Roboto"}}
+
               onClick={() => setStep(3)}
               class="btn  rolebtn"
               type="submit"
